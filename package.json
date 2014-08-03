@@ -1,5 +1,5 @@
 {
-  "version": "0.0.3",
+  "version": "1.0.0",
   "name": "logger-request-cli",
   "description": "logger request parser for nodejs",
   "keywords": [
@@ -24,11 +24,13 @@
     "email": "hex7c0@gmail.com"
   },
   "directories":{
-    "bin":"./min/bin",
+    "bin":"./bin",
     "doc":"./doc",
     "lib":"./min/lib"
   },
-  "bin": "./min/bin/cli.js",
+  "bin": {
+    "logger-request": "./bin/cli.js"
+  },
   "main": "index.min.js",
   "dependencies": {
     "ansi-styles": "1.1.0",
