@@ -29,6 +29,34 @@ parser({
     bytesReq: true
 });
 ```
+with `-g` option
+```shell
+$> logger-request -h
+
+Usage:
+  logger-request [OPTIONS] [ARGS]
+
+Options: 
+      --filename FILE    Pathname of the log file to be read
+  -i, --ip               Parse ip
+  -u, --url              Parse url
+  -r, --reponse          Parse time of response
+  -p, --pid              Parse pid
+  -q, --bytesReq         Parse bytesReq
+  -s, --bytesRes         Parse bytesRes
+  -e, --referrer         Parse referrer
+  -a, --auth             Parse basic-authentication
+  -u, --agent            Parse user agent
+  -w, --w3c              Parse http version
+  -l, --level            Parse log level
+  -m, --message          Parse log message
+  -t, --timestamp        Parse log timestamp
+  -R, --report           Not print filename stats
+  -v, --version          Display the current version
+  -h, --help             Display help and usage details
+  
+$> logger-request -u A.log
+```
 
 ### parser(options)
 

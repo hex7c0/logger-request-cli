@@ -23,6 +23,6 @@ try {
 // using function
 parser({
     filename: 'A.log',
-    bytesRes: true,
-    bytesReq: true
+    ip: true,
+    url: true
 });

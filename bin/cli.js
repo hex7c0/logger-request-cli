@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-"use strict";
-
 process.title = 'logger-request';
+
+"use strict";
 
 var VERSION = '1.0.0';
 var cli = require('cli');
@@ -23,14 +23,14 @@ cli.parse({
     level: ['l','Parse log level'],
     message: ['m','Parse log message'],
     timestamp: ['t','Parse log timestamp'],
-    report: ['R','Print filename stats'],
+    report: ['R','Not print filename stats'],
     version: ['v','Display the current version']
 });
 
 cli.main(function(args,options) {
 
-    // cli.debug(args);
-    // cli.debug(options);
+    // console.log(args);
+    // console.log(options);
     if (options.version) {
         console.log(process.title + ' v' + VERSION);
         return;
@@ -38,11 +38,12 @@ cli.main(function(args,options) {
         this.fatal('Missing logfile');
     }
 
-    var f = options.filename || args[0];
-    return parser({
+    var f = args[0] || options.filename;
+    var r = options.report == true ? false : true;
+    var p = parser({
         filename: f,
         ip: options.ip,
-        url: options.rl,
+        url: options.url,
         reponse: options.reponse,
         pid: options.pid,
         bytesReq: options.bytesReq,
@@ -54,7 +55,8 @@ cli.main(function(args,options) {
         level: options.level,
         message: options.message,
         timestamp: options.timestamp,
-        report: options.report,
-        version: options.version
+        report: r
     });
+    // console.log(p)
+    return p;
 });

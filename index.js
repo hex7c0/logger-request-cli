@@ -180,7 +180,7 @@ function wrapper(my) {
  * @exports parser
  * @function parser
  * @param {Object} options - various options. Check README.md
- * @return {Function}
+ * @return {Object}
  */
 module.exports = function parser(options) {
 
