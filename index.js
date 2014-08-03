@@ -16,6 +16,7 @@
 // import
 try {
     var min = __dirname + '/min/';
+    var ansi = require('ansi-styles');
     var fs = require('fs');
     var startline = require('startline');
     var table = require('text-table');
@@ -47,13 +48,23 @@ function wrapper(my) {
     });
 
     // options
+    var open = ansi.green.open;
+    var close = ansi.green.close;
+    var re = new RegExp('\x1b(?:\\[(?:\\d+[ABCDEFGJKSTm]|\\d+;\\d+[Hfm]|'
+            + '\\d+;\\d+;\\d+m|6n|s|u|\\?25[lh])|\\w)','g'); // ansi hack
     if (my.url) {
-        doit.push([input.url,[Object.create(null),'url'],
-                [output.url,['ROUTE','METHOD','STATUS','COUNTER']]]);
+        doit
+                .push([
+                        input.url,
+                        [Object.create(null),'url'],
+                        [
+                                output.url,
+                                [open + 'ROUTE','METHOD','STATUS','COUNTER',
+                                        close]]]);
     }
     if (my.ip) {
         doit.push([input.cc,[Object.create(null),'ip'],
-                [output.ip,['IP','COUNTER']]]);
+                [output.ip,[open + 'IP','COUNTER' + close]]]);
     }
     if (my.response) {
         doit.push([input.avg,[{
@@ -61,10 +72,11 @@ function wrapper(my) {
             total: 0,
             max: 0,
             min: 10000
-        },'response'],[output.avg,['RESPONSE','MS']]]);
+        },'response'],[output.avg,[open + 'RESPONSE','MS' + close]]]);
     }
     if (my.pid) {
-        doit.push([input.cc,[Object.create(null),'pid'],[output.cc,['PID']]]);
+        doit.push([input.cc,[Object.create(null),'pid'],
+                [output.cc,[open + 'PID' + close]]]);
     }
     if (my.bytesReq) {
         doit.push([input.avg,[{
@@ -72,7 +84,7 @@ function wrapper(my) {
             total: 0,
             max: 0,
             min: 10000
-        },'bytesReq'],[output.avg,['BYTES REQUESTED','BYTE']]]);
+        },'bytesReq'],[output.avg,[open + 'BYTES REQUESTED','BYTE' + close]]]);
     }
     if (my.bytesRes) {
         doit.push([input.avg,[{
@@ -80,35 +92,35 @@ function wrapper(my) {
             total: 0,
             max: 0,
             min: 10000
-        },'bytesRes'],[output.avg,['BYTES SENT','BYTE']]]);
+        },'bytesRes'],[output.avg,[open + 'BYTES SENT','BYTE' + close]]]);
     }
     if (my.referrer) {
         doit.push([input.cc,[Object.create(null),'referrer'],
-                [output.cc,['REFERRER']]]);
+                [output.cc,[open + 'REFERRER' + close]]]);
     }
     if (my.auth) {
         doit.push([input.cc,[Object.create(null),'auth'],
-                [output.cc,['USER ATHENTICATION']]]);
+                [output.cc,[open + 'USER ATHENTICATION' + close]]]);
     }
     if (my.agent) {
         doit.push([input.cc,[Object.create(null),'agent'],
-                [output.cc,['USER-AGENT']]]);
+                [output.cc,[open + 'USER-AGENT' + close]]]);
     }
     if (my.version) {
         doit.push([input.cc,[Object.create(null),'version'],
-                [output.cc,['HTTP VERSION']]]);
+                [output.cc,[open + 'HTTP VERSION' + close]]]);
     }
     if (my.level) {
         doit.push([input.cc,[Object.create(null),'level'],
-                [output.cc,['LOG LEVEL']]]);
+                [output.cc,[open + 'LOG LEVEL' + close]]]);
     }
     if (my.message) {
         doit.push([input.cc,[Object.create(null),'message'],
-                [output.cc,['LOG MESSAGE']]]);
+                [output.cc,[open + 'LOG MESSAGE' + close]]]);
     }
     if (my.timestamp) {
         doit.push([input.cc,[Object.create(null),'timestamp'],
-                [output.cc,['LOG TIMESTAMP']]]);
+                [output.cc,[open + 'LOG TIMESTAMP' + close]]]);
     }
 
     // go
@@ -137,14 +149,24 @@ function wrapper(my) {
             }
         }
         if (my.report) {
+            out.push([ansi.yellow.open + 'REPORT' + ansi.yellow.close],[
+                    'line parsed',
+                    ansi.underline.open + c + ansi.underline.close]);
+            if (e > 0) {
+                out.push([ansi.red.open + 'line error',e + ansi.red.close]);
+            }
             var diff = process.hrtime(start);
             diff = ((diff[0] * 1e9 + diff[1]) / 1000000).toFixed(3) + ' ms';
-            out.push(['REPORT'],['line parsed',c],['line error',e],[
-                    'time elapsed',diff]);
+            out.push(['time elapsed',
+                    ansi.underline.open + diff + ansi.underline.close]);
         }
 
         console.log(table(out,{
-            align: ['l','r']
+            align: ['l','r'],
+            stringLength: function(s) {
+
+                return s.replace(re,'').length;
+            }
         }));
         return;
     });
