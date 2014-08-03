@@ -48,7 +48,7 @@ parser({
  - `level` - **Boolean** Flag for `log level` *(default "disabled")*
  - `message` - **Boolean** Flag for `log message` *(default "disabled")*
  - `timestamp` - **Boolean** Flag for `log timestamp` *(default "disabled")*
- - `report` - **Boolean** Flag for `filename stats` *(default "disabled")*
+ - `report` - **Boolean** Flag for `filename stats` *(default "enabled")*
 
 #### Examples
 
