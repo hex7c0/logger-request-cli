@@ -45,6 +45,8 @@ function wrapper(my) {
         file: my.filename,
         encoding: 'utf8',
     });
+
+    // options
     if (my.url) {
         doit.push([input.url,[Object.create(null),'url'],
                 [output.url,['ROUTE','METHOD','STATUS','COUNTER']]]);
@@ -106,9 +108,10 @@ function wrapper(my) {
     }
     if (my.timestamp) {
         doit.push([input.cc,[Object.create(null),'timestamp'],
-                [output.cc,['LOG TIMESTAMPnpm']]]);
+                [output.cc,['LOG TIMESTAMP']]]);
     }
 
+    // go
     stream.on('line',function(line) {
 
         c++;
