@@ -22,6 +22,7 @@ module.exports = function(grunt) {
             options: {
                 preserveComments: 'false',
                 banner: '<%= banner %>',
+                footer: '\n'
             },
             target: {
                 files: [{
@@ -47,7 +48,7 @@ module.exports = function(grunt) {
                 failOnError: false
             },
             docs: {
-                command: "jsdoc ./lib/*.js ./module/*.js -c .jsdoc.json"
+                command: 'jsdoc ./lib/*.js ./module/*.js -c .jsdoc.json'
             }
         }
     });
