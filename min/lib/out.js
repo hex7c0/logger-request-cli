@@ -1,5 +1,5 @@
 /*
- * logger-request-cli v0.0.2
+ * logger-request-cli v0.0.3
  * (c) hex7c0 https://github.com/hex7c0/logger-request-cli/
  * Licensed under GPLv3
  */

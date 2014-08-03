@@ -35,7 +35,7 @@ try {
  * 
  * @function wrapper
  * @param {Object} my - custom object parsed
- * @return {Function}
+ * @return {Object}
  */
 function wrapper(my) {
 
@@ -161,6 +161,7 @@ function wrapper(my) {
                     ansi.underline.open + diff + ansi.underline.close]);
         }
 
+        // print
         console.log(table(out,{
             align: ['l','r'],
             stringLength: function(s) {
@@ -170,7 +171,7 @@ function wrapper(my) {
         }));
         return;
     });
-    return;
+    return my;
 }
 
 /**
@@ -185,8 +186,7 @@ module.exports = function parser(options) {
 
     var options = options || Object.create(null);
     var my = {
-        filename: require('path').resolve(
-                String(options.filename || 'route.log')),
+        filename: require('path').resolve(String(options.filename)),
         ip: Boolean(options.ip),
         url: Boolean(options.url),
         response: Boolean(options.response),

@@ -15,6 +15,7 @@
 // import
 try {
     var parser = require('../index.min.js'); // use require('logger-request-cli')
+    var assert = require('assert');
 } catch (MODULE_NOT_FOUND) {
     console.error(MODULE_NOT_FOUND);
     process.exit(1);
@@ -25,9 +26,9 @@ try {
  */
 describe('options',function() {
 
-    it('should read all file without parsing (no logile)',function(done) {
+    describe('should read all file without parsing (no logile)',function() {
 
-        parser({
+        var m = parser({
             filename: __dirname + '/options.js',
             ip: true,
             url: true,
@@ -44,6 +45,24 @@ describe('options',function() {
             timestamp: true,
             report: true
         });
-        done();
+
+        it('should return all options',function(done) {
+
+            assert.deepEqual(m.ip,true,'ip');
+            assert.deepEqual(m.url,true,'url');
+            assert.deepEqual(m.response,true,'response');
+            assert.deepEqual(m.pid,true,'pid');
+            assert.deepEqual(m.bytesReq,true,'bytesReq');
+            assert.deepEqual(m.bytesRes,true,'bytesRes');
+            assert.deepEqual(m.referrer,true,'referrer');
+            assert.deepEqual(m.auth,true,'auth');
+            assert.deepEqual(m.agent,true,'agent');
+            assert.deepEqual(m.version,true,'version');
+            assert.deepEqual(m.level,true,'level');
+            assert.deepEqual(m.message,true,'message');
+            assert.deepEqual(m.timestamp,true,'timestamp');
+            assert.deepEqual(m.report,true,'report');
+            done();
+        });
     });
 });
