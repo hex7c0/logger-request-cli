@@ -178,7 +178,7 @@ module.exports = function parser(options) {
         level: Boolean(options.level),
         message: Boolean(options.message),
         timestamp: Boolean(options.timestamp),
-        report: !Boolean(options.report)
+        report: options.report == false ? false : true
     };
     if (!fs.existsSync(my.filename)) {
         var e = my.filename + ' not exists';
