@@ -34,10 +34,6 @@ module.exports = function(grunt) {
                     src: 'module/*.js',
                     dest: 'min'
                 },{
-                    expand: true,
-                    src: 'bin/*.js',
-                    dest: 'min'
-                },{
                     'index.min.js': 'index.js'
                 }]
             }

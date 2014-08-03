@@ -34,7 +34,7 @@ parser({
 
 #### options
 
- - `filename` - **String** Filename of the logfile to read it *(default "null")*
+ - `filename` - **String** Pathname of the log file to be read *(default "null")*
  - `ip` - **Boolean** Flag for `req.ip` *(default "disabled")*
  - `url` - **Boolean** Flag for `req.url` *(default "disabled")*
  - `response` - **Boolean** Flag for `time of response` *(default "disabled")*
