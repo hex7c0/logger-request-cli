@@ -4,7 +4,7 @@
  * @module logger-request-cli
  * @package logger-request-cli
  * @subpackage main
- * @version 1.0.0
+ * @version 1.1.0
  * @author hex7c0 <hex7c0@gmail.com>
  * @copyright hex7c0 2014
  * @license GPLv3
@@ -13,11 +13,15 @@
 /*
  * initialize module
  */
+// load
+var min = __dirname + '/min/';
+var re = new RegExp('\x1b(?:\\[(?:\\d+[ABCDEFGJKSTm]|\\d+;\\d+[Hfm]|'
+        + '\\d+;\\d+;\\d+m|6n|s|u|\\?25[lh])|\\w)','g'); // ansi hack
 // import
 try {
-    var min = __dirname + '/min/';
     var ansi = require('ansi-styles');
     var fs = require('fs');
+    var resolve = require('path').resolve;
     var startline = require('startline');
     var table = require('text-table');
     var input = require(min + 'lib/in.js');
@@ -50,8 +54,6 @@ function wrapper(my) {
     // options
     var open = ansi.green.open;
     var close = ansi.green.close;
-    var re = new RegExp('\x1b(?:\\[(?:\\d+[ABCDEFGJKSTm]|\\d+;\\d+[Hfm]|'
-            + '\\d+;\\d+;\\d+m|6n|s|u|\\?25[lh])|\\w)','g'); // ansi hack
     if (my.url) {
         doit
                 .push([
@@ -124,6 +126,33 @@ function wrapper(my) {
     }
 
     // go
+    if (my.search) {
+        doit = [];
+        stream.on('line',function(line) {
+
+            var s = line.match(my.search);
+            if (s) {
+                var line = line.replace(my.search,ansi.red.open + s[0]
+                        + ansi.red.close + ansi.gray.open);
+                // console.log(s)
+                doit
+                        .push(['line ' + c,
+                                ansi.gray.open + line + ansi.gray.close]);
+            }
+            c++;
+            return;
+        });
+        stream.on('close',function() {
+
+            if (doit.length == 0) {
+                console.log('Not found');
+            }
+            console.log(table(doit));
+            return;
+        });
+        return;
+    }
+
     stream.on('line',function(line) {
 
         c++;
@@ -136,41 +165,60 @@ function wrapper(my) {
         } catch (err) {
             e++;
         }
-
         return;
     });
     stream.on('close',function() {
 
         var out = [];
+        var csv = [];
         for (var i = 0, ii = doit.length; i < ii; i++) {
             var buff = doit[i][2][0](doit[i][1],doit[i][2][1]);
             for (var b = 0, bb = buff.length; b < bb; b++) {
                 out.push(buff[b]);
             }
         }
+
+        var consol = out.slice();
         if (my.report) {
-            out.push([ansi.yellow.open + 'REPORT' + ansi.yellow.close],[
+            csv.push([ansi.yellow.open + 'REPORT' + ansi.yellow.close],[
                     'line parsed',
                     ansi.underline.open + c + ansi.underline.close]);
+            consol.push(csv[0]);
+            consol.push(csv[1]);
             if (e > 0) {
-                out.push([ansi.red.open + 'line error',e + ansi.red.close]);
+                csv.push([ansi.red.open + 'line error',e + ansi.red.close]);
+                consol.push(csv[2]);
             }
             var diff = process.hrtime(start);
             diff = ((diff[0] * 1e9 + diff[1]) / 1000000).toFixed(3) + ' ms';
-            out.push(['time elapsed',
+            csv.push(['time elapsed',
                     ansi.underline.open + diff + ansi.underline.close]);
+            consol.push(csv[csv.length - 1]);
         }
 
         // print
-        console.log(table(out,{
-            align: ['l','r'],
-            stringLength: function(s) {
+        if (my.csv) { // file
+            var to_csv = require(min + 'lib/csv.js');
+            console.log(table(csv,{
+                align: ['l','r'],
+                stringLength: function(s) {
 
-                return s.replace(re,'').length;
-            }
-        }));
+                    return s.replace(re,'').length;
+                }
+            }));
+            to_csv(String(my.csv),out);
+        } else { // console
+            console.log(table(consol,{
+                align: ['l','r'],
+                stringLength: function(s) {
+
+                    return s.replace(re,'').length;
+                }
+            }));
+        }
         return;
     });
+
     return my;
 }
 
@@ -186,7 +234,7 @@ module.exports = function parser(options) {
 
     var options = options || Object.create(null);
     var my = {
-        filename: require('path').resolve(String(options.filename)),
+        filename: resolve(String(options.filename)),
         ip: Boolean(options.ip),
         url: Boolean(options.url),
         response: Boolean(options.response),
@@ -200,11 +248,19 @@ module.exports = function parser(options) {
         level: Boolean(options.level),
         message: Boolean(options.message),
         timestamp: Boolean(options.timestamp),
-        report: options.report == false ? false : true
+        report: options.report == false ? false : true,
+        csv: options.csv,
+        search: options.search
     };
     if (!fs.existsSync(my.filename)) {
         var e = my.filename + ' not exists';
         throw new Error(e);
+    }
+    if (my.csv) {
+        my.csv = resolve(String(my.csv));
+    }
+    if (my.search) {
+        my.search = new RegExp(my.search,'g');
     }
 
     return wrapper(my);
