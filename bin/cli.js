@@ -41,12 +41,12 @@ cli.main(function(args,options) {
     }
 
     var f = args[0] || options.filename;
-    var r = options.report == true ? false : true;
+    var R = options.report == true ? false : true;
     var p = parser({
         filename: f,
         ip: options.ip,
         url: options.url,
-        reponse: options.reponse,
+        response: options.response,
         pid: options.pid,
         bytesReq: options.bytesReq,
         bytesRes: options.bytesRes,
@@ -57,7 +57,7 @@ cli.main(function(args,options) {
         level: options.level,
         message: options.message,
         timestamp: options.timestamp,
-        report: r,
+        report: R,
         csv: options.csv,
         search: options.search
     });
