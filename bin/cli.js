@@ -4,7 +4,7 @@ process.title = 'logger-request';
 
 "use strict";
 
-var VERSION = '1.0.0';
+var VERSION = '1.1.0';
 var cli = require('cli');
 var parser = require('../index.min.js');
 
@@ -24,6 +24,8 @@ cli.parse({
     message: ['m','Parse log message'],
     timestamp: ['t','Parse log timestamp'],
     report: ['R','Not print filename stats'],
+    csv: [false,'Write results to csv file','string'],
+    search: [false,'Search string inside logfile','string'],
     version: ['v','Display the current version']
 });
 
@@ -55,7 +57,9 @@ cli.main(function(args,options) {
         level: options.level,
         message: options.message,
         timestamp: options.timestamp,
-        report: r
+        report: r,
+        csv: options.csv,
+        search: options.search
     });
     // console.log(p)
     return p;
