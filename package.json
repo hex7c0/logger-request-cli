@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "name": "logger-request-cli",
   "description": "logger request parser for nodejs",
   "keywords": [
@@ -9,7 +9,7 @@
     "cli"
   ],
   "preferGlobal": true,
-  "homepage": "https://github.com/hex7c0/logger-request-cli/",
+  "homepage": "http://supergiovane.tk/#/logger-request-cli",
   "author": {
     "name": "hex7c0",
     "email": "hex7c0@gmail.com",

@@ -17,6 +17,10 @@ or
 ```
 git clone git://github.com/hex7c0/logger-request-cli.git
 ```
+or
+```
+http://supergiovane.tk/#/logger-request-cli
+```
 
 ## API
 
@@ -29,7 +33,7 @@ parser({
     bytesReq: true
 });
 ```
-with `-g` option
+global parser with `-g` option
 ```shell
 $> logger-request -h
 
@@ -52,17 +56,23 @@ Options:
   -m, --message          Parse log message
   -t, --timestamp        Parse log timestamp
   -R, --report           Not print filename stats
+      --csv STRING       Write results to csv file
+      --search STRING    Search string inside logfile
   -v, --version          Display the current version
   -h, --help             Display help and usage details
-  
+
 $> logger-request -u A.log
+
+$> logger-request --csv a.csv A.log
+
+$> logger-request --search monitode A.log
 ```
 
 ### parser(options)
 
 #### options
 
- - `filename` - **String** Pathname of the log file to be read *(default "null")*
+ - `filename` - **String** Pathname of the logfile to be read *(default "null")*
  - `ip` - **Boolean** Flag for `req.ip` *(default "disabled")*
  - `url` - **Boolean** Flag for `req.url` *(default "disabled")*
  - `response` - **Boolean** Flag for `time of response` *(default "disabled")*
@@ -77,6 +87,8 @@ $> logger-request -u A.log
  - `message` - **Boolean** Flag for `log message` *(default "disabled")*
  - `timestamp` - **Boolean** Flag for `log timestamp` *(default "disabled")*
  - `report` - **Boolean** Flag for `filename stats` *(default "enabled")*
+ - `csv` - **String** Write parsed object to csv file *(default "disabled")*
+ - `search` - **String** Search string inside logfile *(default "disabled")*
 
 #### Examples
 
