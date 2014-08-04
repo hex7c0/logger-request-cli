@@ -12,7 +12,7 @@ cli.parse({
     filename: [false,'Pathname of the log file to be read','file'],
     ip: ['i','Parse ip'],
     url: ['u','Parse url'],
-    reponse: ['r','Parse time of response'],
+    response: ['r','Parse time of response'],
     pid: ['p','Parse pid'],
     bytesReq: ['q','Parse bytesReq'],
     bytesRes: ['s','Parse bytesRes'],
