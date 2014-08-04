@@ -23,5 +23,6 @@ try {
 // using function
 parser({
     filename: 'A.log',
-    ip: true
+    // ip: true,
+    response: true
 });
