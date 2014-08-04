@@ -14,7 +14,7 @@
  */
 // import
 try {
-    var parser = require('../index.js'); // use require('logger-request-cli') instead
+    var parser = require('../index.min.js'); // use require('logger-request-cli') instead
 } catch (MODULE_NOT_FOUND) {
     console.error(MODULE_NOT_FOUND);
     process.exit(1);
