@@ -57,4 +57,6 @@ module.exports = function(grunt) {
     grunt.registerTask('doc',['shell']);
     grunt.registerTask('default',['min','doc']);
 
+    return;
 };
+
