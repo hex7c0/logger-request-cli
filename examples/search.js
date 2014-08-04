@@ -1,6 +1,6 @@
 "use strict";
 /**
- * @file log example
+ * @file search example
  * @module logger-request-cli
  * @package logger-request-cli
  * @subpackage examples
@@ -23,5 +23,5 @@ try {
 // using function
 parser({
     filename: 'A.log',
-    ip: true
+    search: 'monitode'
 });
