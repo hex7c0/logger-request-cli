@@ -35,7 +35,7 @@ parser({
 ```
 global parser with `-g` option
 ```shell
-$> logger-request -h
+$ logger-request -h
 
 Usage:
   logger-request [OPTIONS] [ARGS]
@@ -61,11 +61,11 @@ Options:
   -v, --version          Display the current version
   -h, --help             Display help and usage details
 
-$> logger-request -u A.log
+$ logger-request -u A.log
 
-$> logger-request --csv a.csv A.log
+$ logger-request --csv a.csv A.log
 
-$> logger-request --search monitode A.log
+$ logger-request --search monitode A.log
 ```
 
 ### parser(options)
