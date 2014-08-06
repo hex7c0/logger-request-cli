@@ -1,4 +1,4 @@
-# [logger-request-cli](https://github.com/hex7c0/logger-request-cli)
+# [logger-request-cli](http://supergiovane.tk/#/logger-request-cli)
 [![NPM version](https://badge.fury.io/js/logger-request-cli.svg)](http://badge.fury.io/js/logger-request-cli)
 [![Build Status](https://travis-ci.org/hex7c0/logger-request-cli.svg?branch=master)](https://travis-ci.org/hex7c0/logger-request-cli)
 [![devDependency Status](https://david-dm.org/hex7c0/logger-request-cli/dev-status.svg)](https://david-dm.org/hex7c0/logger-request-cli#info=devDependencies)
