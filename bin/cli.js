@@ -18,7 +18,7 @@ cli.parse({
     bytesRes: ['s','Parse bytesRes'],
     referrer: ['e','Parse referrer'],
     auth: ['a','Parse basic-authentication'],
-    agent: ['u','Parse user agent'],
+    agent: ['b','Parse user agent'],
     w3c: ['w','Parse http version'],
     level: ['l','Parse log level'],
     message: ['m','Parse log message'],

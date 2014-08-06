@@ -86,9 +86,9 @@ $ logger-request --search monitode A.log
  - `level` - **Boolean** Flag for `log level` *(default "disabled")*
  - `message` - **Boolean** Flag for `log message` *(default "disabled")*
  - `timestamp` - **Boolean** Flag for `log timestamp` *(default "disabled")*
- - `report` - **Boolean** Flag for `filename stats` *(default "enabled")*
  - `csv` - **String** Write parsed object to csv file *(default "disabled")*
  - `search` - **String** Search string inside logfile *(default "disabled")*
+ - `report` - **Boolean** Flag for `filename stats` *(default "enabled")*
 
 #### Examples
 
