@@ -1,4 +1,5 @@
 # [logger-request-cli](http://supergiovane.tk/#/logger-request-cli)
+
 [![NPM version](https://badge.fury.io/js/logger-request-cli.svg)](http://badge.fury.io/js/logger-request-cli)
 [![Build Status](https://travis-ci.org/hex7c0/logger-request-cli.svg?branch=master)](https://travis-ci.org/hex7c0/logger-request-cli)
 [![devDependency Status](https://david-dm.org/hex7c0/logger-request-cli/dev-status.svg)](https://david-dm.org/hex7c0/logger-request-cli#info=devDependencies)
@@ -10,31 +11,18 @@ Show output to console.
 
 Install through NPM
 
-```
+```bash
 npm install -g logger-request-cli
 ```
 or
-```
+```bash
 git clone git://github.com/hex7c0/logger-request-cli.git
-```
-or
-```
-http://supergiovane.tk/#/logger-request-cli
 ```
 
 ## API
 
-inside nodejs project
-```js
-var parser = require('logger-request-cli');
-
-parser({
-    filename: 'A.log',
-    bytesReq: true
-});
-```
 global parser with `-g` option
-```shell
+```bash
 $ logger-request -h
 
 Usage:
@@ -68,6 +56,16 @@ $ logger-request --csv a.csv A.log
 $ logger-request --search monitode A.log
 ```
 
+inside nodejs project
+```js
+var parser = require('logger-request-cli');
+
+parser({
+    filename: 'A.log',
+    bytesReq: true
+});
+```
+
 ### parser(options)
 
 #### options
@@ -90,11 +88,8 @@ $ logger-request --search monitode A.log
  - `search` - **String** Search string inside logfile *(default "disabled")*
  - `report` - **Boolean** Flag for `filename stats` *(default "enabled")*
 
-#### Examples
+## Examples
 
 Take a look at my [examples](https://github.com/hex7c0/logger-request-cli/tree/master/examples)
 
-## License
-Copyright (c) 2014 hex7c0
-
-Licensed under the GPLv3 license
+### [License GPLv3](http://opensource.org/licenses/GPL-3.0)
