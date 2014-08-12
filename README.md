@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/hex7c0/logger-request-cli.svg?branch=master)](https://travis-ci.org/hex7c0/logger-request-cli)
 [![devDependency Status](https://david-dm.org/hex7c0/logger-request-cli/dev-status.svg)](https://david-dm.org/hex7c0/logger-request-cli#info=devDependencies)
 
-[`Logger request`](https://github.com/hex7c0/logger-request) parser for [nodejs](http://nodejs.org/).
+Parser for [`Logger request`](https://github.com/hex7c0/logger-request).
 Show output to console.
 
 ## Installation
