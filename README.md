@@ -2,7 +2,7 @@
 
 [![NPM version](https://badge.fury.io/js/logger-request-cli.svg)](http://badge.fury.io/js/logger-request-cli)
 [![Build Status](https://travis-ci.org/hex7c0/logger-request-cli.svg?branch=master)](https://travis-ci.org/hex7c0/logger-request-cli)
-[![devDependency Status](https://david-dm.org/hex7c0/logger-request-cli/dev-status.svg)](https://david-dm.org/hex7c0/logger-request-cli#info=devDependencies)
+[![Dependency Status](https://david-dm.org/hex7c0/logger-request-cli/status.svg)](https://david-dm.org/hex7c0/logger-request-cli)
 
 Parser for [`Logger request`](https://github.com/hex7c0/logger-request).
 Show output to console.
