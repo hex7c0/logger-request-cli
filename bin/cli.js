@@ -1,10 +1,8 @@
 #!/usr/bin/env node
-
-process.title = 'logger-request';
-
 "use strict";
 
-var VERSION = '1.1.0';
+process.title = 'logger-request';
+var VERSION = '1.1.5';
 var cli = require('cli');
 var parser = require('../index.min.js');
 
