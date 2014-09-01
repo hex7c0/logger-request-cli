@@ -1,5 +1,5 @@
 {
-  "version": "1.1.6",
+  "version": "1.1.7",
   "name": "logger-request-cli",
   "description": "parser for logger request",
   "keywords": [
@@ -34,8 +34,8 @@
   "main": "index.min.js",
   "dependencies": {
     "ansi-styles": "1.1.0",
-    "cli": "0.6.3",
-    "startline": "1.3.5",
+    "cli": "0.6.4",
+    "startline": "1.3.6",
     "text-table": "0.2.0"
   },
   "devDependencies": {
@@ -43,6 +43,7 @@
     "mocha": "~1.21.4",
     "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-uglify": "~0.5.1",
+    "grunt-endline": "~0.2.0",
     "grunt-shell": "~1.0.1"
   },
   "engines": {

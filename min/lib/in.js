@@ -1,5 +1,5 @@
 /*
- * logger-request-cli v1.1.5
+ * logger-request-cli v1.1.7
  * (c) hex7c0 http://supergiovane.tk/#/logger-request-cli
  * Licensed under GPLv3
  */
