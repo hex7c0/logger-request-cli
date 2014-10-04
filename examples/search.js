@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 /**
  * @file search example
  * @module logger-request-cli

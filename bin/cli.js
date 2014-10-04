@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-"use strict";
+'use strict';
 
 process.title = 'logger-request';
 var VERSION = '1.1.5';
