@@ -1,5 +1,5 @@
 {
-  "version": "1.1.8",
+  "version": "1.1.9",
   "name": "logger-request-cli",
   "description": "parser for logger request",
   "keywords": [
@@ -23,10 +23,9 @@
     "url": "https://github.com/hex7c0/logger-request-cli/issues",
     "email": "hex7c0@gmail.com"
   },
-  "directories":{
-    "bin":"./bin",
-    "doc":"./doc",
-    "lib":"./min/lib"
+  "directories": {
+    "bin": "./bin",
+    "lib": "./min/lib"
   },
   "bin": {
     "logger-request": "./bin/cli.js"
@@ -39,15 +38,14 @@
     "text-table": "0.2.0"
   },
   "devDependencies": {
-    "logger-request": "~3.0.3",
-    "mocha": "~1.21.4",
-    "grunt-contrib-clean": "~0.6.0",
-    "grunt-contrib-uglify": "~0.5.1",
-    "grunt-endline": "~0.2.0",
-    "grunt-shell": "~1.1.1"
+    "logger-request": "~3.0",
+    "mocha": "~1.21",
+    "grunt-contrib-clean": "~0.6",
+    "grunt-contrib-uglify": "~0.6",
+    "grunt-endline": "~0.2"
   },
   "engines": {
-    "node": ">=0.10"
+    "node": "^0.10"
   },
   "scripts": {
     "prepublish": "npm prune",
