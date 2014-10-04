@@ -1,5 +1,5 @@
 {
-  "version": "1.1.9",
+  "version": "1.1.10",
   "name": "logger-request-cli",
   "description": "parser for logger request",
   "keywords": [
@@ -34,7 +34,7 @@
   "dependencies": {
     "ansi-styles": "1.1.0",
     "cli": "0.6.4",
-    "startline": "1.3.9",
+    "startline": "1.3.10",
     "text-table": "0.2.0"
   },
   "devDependencies": {
