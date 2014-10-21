@@ -2,7 +2,7 @@
 'use strict';
 
 process.title = 'logger-request';
-var VERSION = '1.1.5';
+var VERSION = '1.1.11';
 var cli = require('cli');
 var parser = require('../index.min.js');
 
