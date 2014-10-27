@@ -4,7 +4,7 @@
  * @module logger-request-cli
  * @package logger-request-cli
  * @subpackage main
- * @version 1.1.6
+ * @version 1.1.0
  * @author hex7c0 <hex7c0@gmail.com>
  * @copyright hex7c0 2014
  * @license GPLv3
@@ -130,11 +130,11 @@ function wrapper(my) {
     // go
     if (my.search) {
         doit = [];
-        stream.on('line', function(line) {
+        stream.on('line', function(lines) {
 
-            var s = line.match(my.search);
+            var s = lines.match(my.search);
             if (s) {
-                var line = line.replace(my.search, ansi.red.open + s[0]
+                var line = lines.replace(my.search, ansi.red.open + s[0]
                         + ansi.red.close + ansi.gray.open);
                 // console.log(s)
                 doit.push([ 'line ' + c,
@@ -154,11 +154,11 @@ function wrapper(my) {
         return;
     }
 
-    stream.on('line', function(line) {
+    stream.on('line', function(lines) {
 
         c++;
         try {
-            var line = JSON.parse(line);
+            var line = JSON.parse(lines);
             for (var i = 0, ii = doit.length; i < ii; i++) {
                 var params = doit[i][1];
                 params[0] = doit[i][0](line, params);
@@ -228,12 +228,12 @@ function wrapper(my) {
  * 
  * @exports parser
  * @function parser
- * @param {Object} options - various options. Check README.md
+ * @param {Object} opt - various options. Check README.md
  * @return {Object}
  */
-module.exports = function parser(options) {
+function parser(opt) {
 
-    var options = options || Object.create(null);
+    var options = opt || Object.create(null);
     var my = {
         filename: resolve(String(options.filename)),
         ip: Boolean(options.ip),
@@ -249,7 +249,7 @@ module.exports = function parser(options) {
         level: Boolean(options.level),
         message: Boolean(options.message),
         timestamp: Boolean(options.timestamp),
-        report: options.report == false ? false : true,
+        report: options.report === false ? false : true,
         csv: options.csv,
         search: options.search
     };
@@ -265,4 +265,5 @@ module.exports = function parser(options) {
     }
 
     return wrapper(my);
-};
+}
+module.exports = parser;
