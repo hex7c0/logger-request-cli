@@ -19,9 +19,11 @@ var assert = require('assert');
  */
 describe('options', function() {
 
-  describe('should read all file without parsing (no logile)', function() {
+  var m;
 
-    var m = parser({
+  it('should read all file without parsing (no logile)', function(done) {
+
+    m = parser({
       filename: __dirname + '/options.js',
       ip: true,
       url: true,
@@ -38,24 +40,24 @@ describe('options', function() {
       timestamp: true,
       report: true
     });
+    done();
+  });
+  it('should return all options', function(done) {
 
-    it('should return all options', function(done) {
-
-      assert.deepEqual(m.ip, true, 'ip');
-      assert.deepEqual(m.url, true, 'url');
-      assert.deepEqual(m.response, true, 'response');
-      assert.deepEqual(m.pid, true, 'pid');
-      assert.deepEqual(m.bytesReq, true, 'bytesReq');
-      assert.deepEqual(m.bytesRes, true, 'bytesRes');
-      assert.deepEqual(m.referrer, true, 'referrer');
-      assert.deepEqual(m.auth, true, 'auth');
-      assert.deepEqual(m.agent, true, 'agent');
-      assert.deepEqual(m.version, true, 'version');
-      assert.deepEqual(m.level, true, 'level');
-      assert.deepEqual(m.message, true, 'message');
-      assert.deepEqual(m.timestamp, true, 'timestamp');
-      assert.deepEqual(m.report, true, 'report');
-      done();
-    });
+    assert.ok(m.ip, 'ip');
+    assert.ok(m.url, 'url');
+    assert.ok(m.response, 'response');
+    assert.ok(m.pid, 'pid');
+    assert.ok(m.bytesReq, 'bytesReq');
+    assert.ok(m.bytesRes, 'bytesRes');
+    assert.ok(m.referrer, 'referrer');
+    assert.ok(m.auth, 'auth');
+    assert.ok(m.agent, 'agent');
+    assert.ok(m.version, 'version');
+    assert.ok(m.level, 'level');
+    assert.ok(m.message, 'message');
+    assert.ok(m.timestamp, 'timestamp');
+    assert.ok(m.report, 'report');
+    done();
   });
 });
