@@ -2,7 +2,6 @@
 /**
  * @file logger-request-cli main
  * @module logger-request-cli
- * @package logger-request-cli
  * @subpackage main
  * @version 1.1.0
  * @author hex7c0 <hex7c0@gmail.com>
@@ -13,23 +12,15 @@
 /*
  * initialize module
  */
-// load
-var min = __dirname + '/min/';
+var ansi = require('ansi-styles');
+var fs = require('fs');
+var resolve = require('path').resolve;
+var startline = require('startline');
+var table = require('text-table');
+var input = require('./lib/in.js');
+var output = require('./lib/out.js');
 var re = new RegExp('\x1b(?:\\[(?:\\d+[ABCDEFGJKSTm]|\\d+;\\d+[Hfm]|'
-    + '\\d+;\\d+;\\d+m|6n|s|u|\\?25[lh])|\\w)', 'g'); // ansi hack
-// import
-try {
-  var ansi = require('ansi-styles');
-  var fs = require('fs');
-  var resolve = require('path').resolve;
-  var startline = require('startline');
-  var table = require('text-table');
-  var input = require(min + 'lib/in.js');
-  var output = require(min + 'lib/out.js');
-} catch (MODULE_NOT_FOUND) {
-  console.error(MODULE_NOT_FOUND);
-  process.exit(1);
-}
+  + '\\d+;\\d+;\\d+m|6n|s|u|\\?25[lh])|\\w)', 'g'); // ansi hack
 
 /*
  * functions
@@ -56,15 +47,12 @@ function wrapper(my) {
   var close = ansi.green.close;
   if (my.url) {
     doit
-        .push([
-            input.url,
-            [ Object.create(null), 'url' ],
-            [ output.url,
-                [ open + 'ROUTE', 'METHOD', 'STATUS', 'COUNTER', close ] ] ]);
+    .push([ input.url, [ Object.create(null), 'url' ],
+      [ output.url, [ open + 'ROUTE', 'METHOD', 'STATUS', 'COUNTER', close ] ] ]);
   }
   if (my.ip) {
     doit.push([ input.cc, [ Object.create(null), 'ip' ],
-        [ output.ip, [ open + 'IP', 'COUNTER' + close ] ] ]);
+      [ output.ip, [ open + 'IP', 'COUNTER' + close ] ] ]);
   }
   if (my.response) {
     doit.push([ input.avg, [ {
@@ -76,7 +64,7 @@ function wrapper(my) {
   }
   if (my.pid) {
     doit.push([ input.cc, [ Object.create(null), 'pid' ],
-        [ output.cc, [ open + 'PID' + close ] ] ]);
+      [ output.cc, [ open + 'PID' + close ] ] ]);
   }
   if (my.bytesReq) {
     doit.push([ input.avg, [ {
@@ -85,7 +73,7 @@ function wrapper(my) {
       max: 0,
       min: 10000
     }, 'bytesReq' ],
-        [ output.avg, [ open + 'BYTES REQUESTED', 'BYTE' + close ] ] ]);
+      [ output.avg, [ open + 'BYTES REQUESTED', 'BYTE' + close ] ] ]);
   }
   if (my.bytesRes) {
     doit.push([ input.avg, [ {
@@ -97,31 +85,31 @@ function wrapper(my) {
   }
   if (my.referrer) {
     doit.push([ input.cc, [ Object.create(null), 'referrer' ],
-        [ output.cc, [ open + 'REFERRER' + close ] ] ]);
+      [ output.cc, [ open + 'REFERRER' + close ] ] ]);
   }
   if (my.auth) {
     doit.push([ input.cc, [ Object.create(null), 'auth' ],
-        [ output.cc, [ open + 'USER ATHENTICATION' + close ] ] ]);
+      [ output.cc, [ open + 'USER ATHENTICATION' + close ] ] ]);
   }
   if (my.agent) {
     doit.push([ input.cc, [ Object.create(null), 'agent' ],
-        [ output.cc, [ open + 'USER-AGENT' + close ] ] ]);
+      [ output.cc, [ open + 'USER-AGENT' + close ] ] ]);
   }
   if (my.version) {
     doit.push([ input.cc, [ Object.create(null), 'version' ],
-        [ output.cc, [ open + 'HTTP VERSION' + close ] ] ]);
+      [ output.cc, [ open + 'HTTP VERSION' + close ] ] ]);
   }
   if (my.level) {
     doit.push([ input.cc, [ Object.create(null), 'level' ],
-        [ output.cc, [ open + 'LOG LEVEL' + close ] ] ]);
+      [ output.cc, [ open + 'LOG LEVEL' + close ] ] ]);
   }
   if (my.message) {
     doit.push([ input.cc, [ Object.create(null), 'message' ],
-        [ output.cc, [ open + 'LOG MESSAGE' + close ] ] ]);
+      [ output.cc, [ open + 'LOG MESSAGE' + close ] ] ]);
   }
   if (my.timestamp) {
     doit.push([ input.cc, [ Object.create(null), 'timestamp' ],
-        [ output.cc, [ open + 'LOG TIMESTAMP' + close ] ] ]);
+      [ output.cc, [ open + 'LOG TIMESTAMP' + close ] ] ]);
   }
 
   // go
@@ -132,7 +120,7 @@ function wrapper(my) {
       var s = lines.match(my.search);
       if (s) {
         var line = lines.replace(my.search, ansi.red.open + s[0]
-            + ansi.red.close + ansi.gray.open);
+          + ansi.red.close + ansi.gray.open);
         // console.log(s)
         doit.push([ 'line ' + c, ansi.gray.open + line + ansi.gray.close ]);
       }
@@ -178,7 +166,7 @@ function wrapper(my) {
     var consol = out.slice();
     if (my.report) {
       csv.push([ ansi.yellow.open + 'REPORT' + ansi.yellow.close ], [
-          'line parsed', ansi.underline.open + c + ansi.underline.close ]);
+        'line parsed', ansi.underline.open + c + ansi.underline.close ]);
       consol.push(csv[0]);
       consol.push(csv[1]);
       if (e > 0) {
@@ -188,13 +176,13 @@ function wrapper(my) {
       var diff = process.hrtime(start);
       diff = ((diff[0] * 1e9 + diff[1]) / 1000000).toFixed(3) + ' ms';
       csv.push([ 'time elapsed',
-          ansi.underline.open + diff + ansi.underline.close ]);
+        ansi.underline.open + diff + ansi.underline.close ]);
       consol.push(csv[csv.length - 1]);
     }
 
     // print
     if (my.csv) { // file
-      var to_csv = require(min + 'lib/csv.js');
+      var to_csv = require('./lib/csv.js');
       console.log(table(csv, {
         align: [ 'l', 'r' ],
         stringLength: function(s) {
