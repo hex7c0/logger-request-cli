@@ -1,3 +1,13 @@
+v1.2.0 / 2015-03-08
+==================
+
+  * Remove `peerDependencies` for npm@3
+  * Remove `grunt`
+  * Update `ansi-styles`@2.0.1
+  * Update `startline`@1.3.12
+  * `windows` test
+  * `iojs` test
+
 v1.1.14 / 2015-01-01
 ==================
 
