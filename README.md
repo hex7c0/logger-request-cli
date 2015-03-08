@@ -1,8 +1,9 @@
 # [logger-request-cli](http://supergiovane.tk/#/logger-request-cli)
 
-[![NPM version](https://badge.fury.io/js/logger-request-cli.svg)](http://badge.fury.io/js/logger-request-cli)
-[![Build Status](https://travis-ci.org/hex7c0/logger-request-cli.svg?branch=master)](https://travis-ci.org/hex7c0/logger-request-cli)
-[![Dependency Status](https://david-dm.org/hex7c0/logger-request-cli/status.svg)](https://david-dm.org/hex7c0/logger-request-cli)
+[![NPM version](https://img.shields.io/npm/v/logger-request-cli.svg)](https://www.npmjs.com/package/logger-request-cli)
+[![Linux Status](https://img.shields.io/travis/hex7c0/logger-request-cli.svg?label=linux)](https://travis-ci.org/hex7c0/logger-request-cli)
+[![Windows Status](https://img.shields.io/appveyor/ci/hex7c0/logger-request-cli.svg?label=windows)](https://ci.appveyor.com/project/hex7c0/logger-request-cli)
+[![Dependency Status](https://img.shields.io/david/hex7c0/logger-request-cli.svg)](https://david-dm.org/hex7c0/logger-request-cli)
 
 Parser for [`Logger request`](https://github.com/hex7c0/logger-request).
 Show output to console.
@@ -61,8 +62,8 @@ inside nodejs project
 var parser = require('logger-request-cli');
 
 parser({
-    filename: 'A.log',
-    bytesReq: true
+  filename: 'A.log',
+  bytesReq: true
 });
 ```
 
@@ -90,6 +91,6 @@ parser({
 
 ## Examples
 
-Take a look at my [examples](https://github.com/hex7c0/logger-request-cli/tree/master/examples)
+Take a look at my [examples](examples)
 
-### [License GPLv3](http://opensource.org/licenses/GPL-3.0)
+### [License GPLv3](LICENSE)
