@@ -48,5 +48,5 @@
     "prepublish": "npm prune",
     "test": "mocha --bail --check-leaks"
   },
-  "license": "GPLv3"
+  "license": "GPL-3.0"
 }
