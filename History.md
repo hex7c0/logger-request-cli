@@ -1,3 +1,11 @@
+v1.2.3 / 2015-06-27
+==================
+
+  * SPDX license
+  * Tested with iojs@2
+  * Update `startline`@1.4.2
+  * Update `cli`@0.8.0.
+
 v1.2.2 / 2015-04-29
 ==================
 
