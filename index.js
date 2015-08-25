@@ -47,8 +47,11 @@ function wrapper(my) {
   var close = ansi.green.close;
   if (my.url) {
     doit
-    .push([ input.url, [ Object.create(null), 'url' ],
-      [ output.url, [ open + 'ROUTE', 'METHOD', 'STATUS', 'COUNTER', close ] ] ]);
+        .push([
+          input.url,
+          [ Object.create(null), 'url' ],
+          [ output.url,
+            [ open + 'ROUTE', 'METHOD', 'STATUS', 'COUNTER', close ] ] ]);
   }
   if (my.ip) {
     doit.push([ input.cc, [ Object.create(null), 'ip' ],
@@ -124,7 +127,7 @@ function wrapper(my) {
         // console.log(s)
         doit.push([ 'line ' + c, ansi.gray.open + line + ansi.gray.close ]);
       }
-      c++;
+      ++c;
       return;
     });
     stream.on('close', function() {
@@ -140,15 +143,15 @@ function wrapper(my) {
 
   stream.on('line', function(lines) {
 
-    c++;
+    ++c;
     try {
       var line = JSON.parse(lines);
-      for (var i = 0, ii = doit.length; i < ii; i++) {
+      for (var i = 0, ii = doit.length; i < ii; ++i) {
         var params = doit[i][1];
         params[0] = doit[i][0](line, params);
       }
     } catch (err) {
-      e++;
+      ++e;
     }
     return;
   });
@@ -156,9 +159,9 @@ function wrapper(my) {
 
     var out = [];
     var csv = [];
-    for (var i = 0, ii = doit.length; i < ii; i++) {
+    for (var i = 0, ii = doit.length; i < ii; ++i) {
       var buff = doit[i][2][0](doit[i][1], doit[i][2][1]);
-      for (var b = 0, bb = buff.length; b < bb; b++) {
+      for (var b = 0, bb = buff.length; b < bb; ++b) {
         out.push(buff[b]);
       }
     }
