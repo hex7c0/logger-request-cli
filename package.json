@@ -9,7 +9,7 @@
     "cli"
   ],
   "preferGlobal": true,
-  "homepage": "http://supergiovane.tk/#/logger-request-cli",
+  "homepage": "https://github.com/hex7c0/logger-request-cli",
   "author": {
     "name": "hex7c0",
     "email": "hex7c0@gmail.com",
@@ -46,7 +46,7 @@
   },
   "scripts": {
     "prepublish": "npm prune",
-    "test": "mocha --bail --check-leaks"
+    "test": "mocha --bail --check-leaks && node bin/cli.js -h"
   },
   "license": "GPL-3.0"
 }
