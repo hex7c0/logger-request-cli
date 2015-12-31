@@ -35,7 +35,7 @@
     "ansi-styles": "2.1.0",
     "cli": "0.11.0",
     "logger-request": "3.x",
-    "startline": "1.5.0",
+    "startline": "1.5.1",
     "text-table": "0.2.0"
   },
   "devDependencies": {
