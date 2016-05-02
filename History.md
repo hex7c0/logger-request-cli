@@ -1,3 +1,11 @@
+v1.2.7 / 2015-05-02
+==================
+
+  * Test against `node`@6
+  * Update `ansi-styles`@2.2.1
+  * Update `cli`@0.11.2
+  * Update `startline`@1.5.2
+
 v1.2.6 / 2015-12-31
 ==================
 
