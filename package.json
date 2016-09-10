@@ -13,7 +13,7 @@
   "author": {
     "name": "hex7c0",
     "email": "hex7c0@gmail.com",
-    "url": "http://hex7c0.tk/"
+    "url": "https://hex7c0.github.io/"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,8 @@
   },
   "directories": {
     "bin": "./bin",
-    "lib": "./lib"
+    "lib": "./lib",
+    "example": "./examples"
   },
   "bin": {
     "logger-request": "./bin/cli.js"
@@ -39,7 +40,7 @@
     "text-table": "0.2.0"
   },
   "devDependencies": {
-    "mocha": "~2.4"
+    "mocha": "~3.0"
   },
   "engines": {
     "node": ">=0.10"
