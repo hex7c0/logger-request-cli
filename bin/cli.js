@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 'use strict';
 
-process.title = 'logger-request';
+process.title = 'loggerRequest';
 var VERSION = require('../package.json').version;
 var cli = require('cli');
 var parser = require('..');
