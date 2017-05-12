@@ -43,7 +43,7 @@
     "mocha": "~3.3"
   },
   "engines": {
-    "node": ">=1"
+    "node": ">=4.0"
   },
   "scripts": {
     "prepublish": "npm prune",

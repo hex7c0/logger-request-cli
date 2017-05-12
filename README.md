@@ -1,7 +1,7 @@
 # [logger-request-cli](https://github.com/hex7c0/logger-request-cli)
 
 [![NPM version](https://img.shields.io/npm/v/logger-request-cli.svg)](https://www.npmjs.com/package/logger-request-cli)
-[![Linux Status](https://img.shields.io/travis/hex7c0/logger-request-cli.svg?label=linux)](https://travis-ci.org/hex7c0/logger-request-cli)
+[![Linux Status](https://img.shields.io/travis/hex7c0/logger-request-cli.svg?label=linux-osx)](https://travis-ci.org/hex7c0/logger-request-cli)
 [![Windows Status](https://img.shields.io/appveyor/ci/hex7c0/logger-request-cli.svg?label=windows)](https://ci.appveyor.com/project/hex7c0/logger-request-cli)
 [![Dependency Status](https://img.shields.io/david/hex7c0/logger-request-cli.svg)](https://david-dm.org/hex7c0/logger-request-cli)
 
