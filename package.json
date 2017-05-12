@@ -40,7 +40,7 @@
     "text-table": "0.2.0"
   },
   "devDependencies": {
-    "mocha": "~3.1"
+    "mocha": "~3.3"
   },
   "engines": {
     "node": ">=1"
