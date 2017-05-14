@@ -1,3 +1,10 @@
+v1.5.0 / 2017-05-14
+==================
+
+  * Tested against `node`@7
+  * Remove support for `node`@4
+  * Update `ansi-styles`@3.0.0
+
 v1.4.0 / 2016-11-03
 ==================
 

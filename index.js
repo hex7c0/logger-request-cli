@@ -3,7 +3,7 @@
  * @file logger-request-cli main
  * @module logger-request-cli
  * @subpackage main
- * @version 1.3.0
+ * @version 1.5.0
  * @author hex7c0 <hex7c0@gmail.com>
  * @copyright hex7c0 2014
  * @license GPLv3
@@ -118,6 +118,7 @@ function wrapper(my) {
   // go
   if (my.search) {
     doit = [];
+
     stream.on('line', function(lines) {
 
       var s = lines.match(my.search);
@@ -128,7 +129,6 @@ function wrapper(my) {
         doit.push([ 'line ' + c, ansi.gray.open + line + ansi.gray.close ]);
       }
       ++c;
-      return;
     });
     stream.on('close', function() {
 
@@ -136,9 +136,8 @@ function wrapper(my) {
         console.log('Not found');
       }
       console.log(table(doit));
-      return;
     });
-    return;
+
   }
 
   stream.on('line', function(lines) {
@@ -153,8 +152,8 @@ function wrapper(my) {
     } catch (err) {
       ++e;
     }
-    return;
   });
+
   stream.on('close', function() {
 
     var out = [];
@@ -203,7 +202,6 @@ function wrapper(my) {
         }
       }));
     }
-    return;
   });
 
   return my;
